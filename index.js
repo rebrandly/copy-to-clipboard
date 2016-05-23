@@ -2,10 +2,9 @@
 
 var deselectCurrent = require('toggle-selection');
 
-var copyKey = /mac os x/i.test(navigator.userAgent) ? '⌘' : 'Ctrl';
-var defaultMessage = 'Copy to clipboard: ' + copyKey + '+C, Enter';
-
 function copy(text, options) {
+  var copyKey = /mac os x/i.test(navigator.userAgent) ? '⌘' : 'Ctrl';
+  var defaultMessage = 'Copy to clipboard: ' + copyKey + '+C, Enter';
   var debug, message, reselectPrevious, range, selection, mark;
   if (!options) { options = {}; }
   debug = options.debug || false;
