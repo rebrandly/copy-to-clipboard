@@ -20,6 +20,7 @@ function copy(text, options) {
     document.body.appendChild(mark);
     mark.select();
 
+
     var successful = document.execCommand('copy');
     if (!successful) {
       throw new Error('copy command was unsuccessful');
@@ -36,7 +37,11 @@ function copy(text, options) {
   } finally {
     if (selection) {
       if (typeof selection.removeRange == 'function') {
-        selection.removeRange(range);
+				try {
+					selection.removeRange(range);
+				} catch (err) {
+					debug && console.error('unable to remove range, this is experimental technology');
+				}
       } else {
         selection.removeAllRanges();
       }
